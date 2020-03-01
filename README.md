@@ -13,21 +13,23 @@ Git also must be installed. It's possible to download it here: [link](https://gi
 
 ### Git Clonne
 
-Clone the application inside a folder called `Neoway`:
+Clone the application inside a folder:
 ```console
-
+git clone https://github.com/mateusolvr/neoway.git
 ```
 
-First it's needed to clone 
+### Files
 
+The files wished to be inserted into the database must be .txt or .csv and put inside the folder `./neoway/myfiles/`
 
+### Execution
 
+Onde inside the folder `neoway` execute the command:
+```console
+docker-compose up
+```
 
-
-
-
-
-
+After a few seconds, your data will be cleaned and validated inside your database.
 
 
 
