@@ -69,6 +69,6 @@ Here are a few other useful commands if one judges necessary.
 
 ### - Improvements to be made:
 
-- Delete the file which has already been inserted, so when one runs `docker-compose up` again the same data is not duplicated.
+- Delete the file which has already been inserted, so when one runs `docker-compose up` again the same data will not be duplicated.
 
-- Insert all raw data into a previous schema without any treatment or validation to have all the records. Use another schema with the clean and validated data.
+- Insert all raw data into a previous schema without any treatment or validation to have historical data. Use another schema to cleaned and validated data.

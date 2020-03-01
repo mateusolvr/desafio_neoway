@@ -12,6 +12,9 @@ func CNPJUtils(cnpj string) (string, bool) {
 	clean := regexp.MustCompile(`[^\d]`)
 	cleanCNPJ := clean.ReplaceAllString(cnpj, "")
 	// Pad zeros to the left
+	if cleanCNPJ == "" {
+		return cleanCNPJ, false
+	}
 	cleanCNPJ = fmt.Sprintf("%014v", cleanCNPJ)
 
 	// Return false if the CNPJ has more than 14 numbers
