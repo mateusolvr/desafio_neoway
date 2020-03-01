@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+    db:
+      image: postgres
+      environment:
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=admin
+        - POSTGRES_DB=neoway
+      ports:
+        - "5431:5432"
+      volumes:
+        - ./sql/create-table.sql:/docker-entrypoint-initdb.d/1-init.sql
+      deploy:
+        restart_policy:
+          condition: on-failure
+          
+    app:
+        build: .
+        depends_on: 
+          - db
+        links:
+          - db
+        volumes:
+            - .:/go/src/neoway
+        working_dir: /go/src/neoway
+        command: ["./wait-for-it.sh", "db:5432", "--", "go", "run", "main.go"]
+    
