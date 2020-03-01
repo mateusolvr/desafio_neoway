@@ -1,5 +1,5 @@
 # Neoway Challenge
-## Data manipulation and persistence in an RDBMS.
+## Data manipulation and persistence in an RDBMS
 
 This program was built with the purpose of extracting the data from .csv or .txt files using the Golang programming language and inserting them into a PostgreSQL database, ensuring data cleansing and also validation. It all is done using docker-compose.
 
@@ -24,13 +24,29 @@ The files wished to be inserted into the database must be .txt or .csv and put i
 
 ### Execution
 
-Onde inside the folder `neoway` execute the command:
+Once inside the folder `neoway` execute the command:
 ```console
 docker-compose up
 ```
 
 After a few seconds, your data will be cleaned and validated inside your database.
 
+
+### Useful commands
+
+Here are a few other useful commands if one judges necessary.
+
+`docker-compose up -d`: Runs the docker-compose in the background.
+
+`docker-compose images`: Check all docker images.
+
+`docker-compose ps`: Check all docker containers.
+
+`docker-compose stop`: Stop services.
+
+`docker-compose rm`: Remove stopped containers.
+
+`docker-compose down`: Remove all docker containers.
 
 
 
