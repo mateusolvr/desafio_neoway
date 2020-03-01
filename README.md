@@ -35,16 +35,19 @@ After a few seconds, your data will be cleaned and validated inside your databas
 
 To be able to validate, one can use the following commands.
 
-
+Run the following to get the PostgreSQL container.
 ```console
 docker-compose ps
 ```
-
+Substitute the container name in the next code.
 ```console
-docker-compose up
+docker exec -it $container psql -U postgres -d neoway
+```
 
-
-
+Now one is able to check the data. For example:
+```console
+SELECT * FROM public.analise_compra_usuario;
+```
 
 ### - Useful commands
 
@@ -64,7 +67,8 @@ Here are a few other useful commands if one judges necessary.
 
 
 
-### Possiveis melhorias:
-jogar dados brutos num schema anterior sem nenhum tratamento e outro schema com dados tratados e validados
+### - Improvements to be made:
 
-deletar arquivo pasta após inserido
+- Delete the file which has already been inserted, so when one runs `docker-compose up` again the same data is not duplicated.
+
+- Insert all raw data into a previous schema without any treatment or validation to have all the records. Use another schema with the clean and validated data.
