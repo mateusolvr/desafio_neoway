@@ -8,7 +8,7 @@ services:
         - POSTGRES_PASSWORD=admin
         - POSTGRES_DB=neoway
       ports:
-        - "5431:5432"
+        - "5430:5432"
       volumes:
         - ./sql/create-table.sql:/docker-entrypoint-initdb.d/1-init.sql
       deploy:
