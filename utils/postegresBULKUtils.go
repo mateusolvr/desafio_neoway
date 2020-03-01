@@ -1,7 +1,9 @@
 package utils
 
 import (
+	"database/sql"
 	"encoding/csv"
+	"fmt"
 	"io"
 	"log"
 	"strconv"
@@ -19,10 +21,7 @@ func ReplaceSQL(old, searchPattern string) string {
 }
 
 // SendDBBULK : Send data to database
-func SendDBBULK(reader *csv.Reader) {
-
-	db := ConnectDB()
-	defer db.Close()
+func SendDBBULK(reader *csv.Reader, db *sql.DB) {
 
 	i := 0
 	n := 0
@@ -67,6 +66,7 @@ func SendDBBULK(reader *csv.Reader) {
 				break
 			}
 		}
+		fmt.Println(i)
 		//trim the last ,
 		sqlStr = strings.TrimSuffix(sqlStr, ",")
 
