@@ -1,22 +1,25 @@
 package utils
 
 import (
+	"fmt"
 	"regexp"
 	"strconv"
 )
 
-// CNPJUtils : Valida e higieniza o número de CNPJ
+// CNPJUtils : Validate and clean the CNPJ numbers
 func CNPJUtils(cnpj string) (string, bool) {
 
 	clean := regexp.MustCompile(`[^\d]`)
 	cleanCNPJ := clean.ReplaceAllString(cnpj, "")
+	// Pad zeros to the left
+	cleanCNPJ = fmt.Sprintf("%014v", cleanCNPJ)
 
-	// Retorn falso se o CNPJ não possuir 14 dígitos
-	if len(cleanCNPJ) != 14 {
+	// Return false if the CNPJ has more than 14 numbers
+	if len(cleanCNPJ) > 14 {
 		return cleanCNPJ, false
 	}
 
-	// Conferência do primeiro dígito verificador
+	// Check the first verifying digit
 	mult := []int{5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2}
 	sumFirstDigit := 0
 	for j := 0; j < 12; j++ {
@@ -38,7 +41,7 @@ func CNPJUtils(cnpj string) (string, bool) {
 		return cleanCNPJ, false
 	}
 
-	// Conferência do segundo dígito verificador
+	// Check the second verifying digit
 	mult2 := []int{6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2}
 	sumSecDigit := 0
 	for j := 0; j < 13; j++ {
@@ -60,6 +63,7 @@ func CNPJUtils(cnpj string) (string, bool) {
 		return cleanCNPJ, false
 	}
 
+	// If all checks are correct, return true
 	return cleanCNPJ, true
 
 }

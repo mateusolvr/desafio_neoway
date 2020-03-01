@@ -1,22 +1,25 @@
 package utils
 
 import (
+	"fmt"
 	"regexp"
 	"strconv"
 )
 
-// CPFUtils : Valida e higieniza o número de CPF
+// CPFUtils : Validate and clean the CPF numbers
 func CPFUtils(cpf string) (string, bool) {
 
 	clean := regexp.MustCompile(`[^\d]`)
 	cleanCPF := clean.ReplaceAllString(cpf, "")
+	// Pad zeros to the left
+	cleanCPF = fmt.Sprintf("%011v", cleanCPF)
 
-	// Retorn falso se o CPF não possuir 11 dígitos
-	if len(cleanCPF) != 11 {
+	// Return false if the CPF has more than 11 numbers
+	if len(cleanCPF) > 11 {
 		return cleanCPF, false
 	}
 
-	// Conferência do primeiro dígito verificador
+	// Check the first verifying digit
 	sumFirstDigit := 0
 	for j := 0; j < 9; j++ {
 		digit, _ := strconv.Atoi(cleanCPF[j : j+1])
@@ -30,7 +33,7 @@ func CPFUtils(cpf string) (string, bool) {
 		return cleanCPF, false
 	}
 
-	// Conferência do segundo dígito verificador
+	// Check the second verifying digit
 	sumSecDigit := 0
 	for j := 0; j < 10; j++ {
 		digit, _ := strconv.Atoi(cleanCPF[j : j+1])
@@ -44,12 +47,12 @@ func CPFUtils(cpf string) (string, bool) {
 		return cleanCPF, false
 	}
 
-	// Conferência dígitos todos iguais
+	// Check if the numbers are all the same
 	actualDigit := cleanCPF[0:1]
 	actualCheck := true
 
 	for i := 1; i < len(cleanCPF); i++ {
-		// Compara cada um dos dígitos do CPF
+		// Compare each number on the CPF
 		currentDigit := cleanCPF[i : i+1]
 		currentCheck := currentDigit == actualDigit
 		actualCheck = currentCheck && actualCheck
@@ -60,6 +63,7 @@ func CPFUtils(cpf string) (string, bool) {
 		return cleanCPF, false
 	}
 
+	// If all checks are correct, return true
 	return cleanCPF, true
 
 }

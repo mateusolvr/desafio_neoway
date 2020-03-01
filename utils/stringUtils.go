@@ -6,9 +6,10 @@ import (
 	"strings"
 )
 
-// StringUtils : Teste de biblioteca
+// StringUtils : Transform NULL and NONEs into nil and replace "," in decimal values with "."
 func StringUtils(s string) sql.NullString {
 
+	// Clean all the number to see if there's an "," left, if there's it's probably a decimal value
 	clean := regexp.MustCompile(`[\d]`)
 	checkValue := clean.ReplaceAllString(s, "")
 
