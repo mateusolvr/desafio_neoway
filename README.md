@@ -6,10 +6,19 @@ This program was built with the purpose of extracting the data from .csv or .txt
 ### Requirements
 
 #### Docker
-The Docker must be installed. It's possible to download it here: [link](https://www.docker.com/products/docker-desktop).
+Docker must be installed. It's possible to download it here: [link](https://www.docker.com/products/docker-desktop).
 
 #### Git
-Git must also be installed. It's possible to download it here: [link](https://git-scm.com/downloads).
+Git also must be installed. It's possible to download it here: [link](https://git-scm.com/downloads).
+
+### Git Clonne
+
+Clone the application inside a folder called `Neoway`:
+```console
+
+```
+
+First it's needed to clone 
 
 
 
