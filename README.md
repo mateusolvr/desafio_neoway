@@ -31,6 +31,20 @@ docker-compose up
 
 After a few seconds, your data will be cleaned and validated inside your database.
 
+### - Validation
+
+To be able to validate, one can use the following commands.
+
+
+```console
+docker-compose ps
+```
+
+```console
+docker-compose up
+
+
+
 
 ### - Useful commands
 
@@ -52,3 +66,5 @@ Here are a few other useful commands if one judges necessary.
 
 ### Possiveis melhorias:
 jogar dados brutos num schema anterior sem nenhum tratamento e outro schema com dados tratados e validados
+
+deletar arquivo pasta após inserido

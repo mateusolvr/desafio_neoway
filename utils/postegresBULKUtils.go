@@ -25,7 +25,7 @@ func SendDBBULK(reader *csv.Reader, db *sql.DB) {
 
 	i := 0
 	n := 0
-	rowsPerInsert := 1000
+	rowsPerInsert := 200
 	endOfData := false
 
 	// Loop to insert only the maximum number of rows defined by the variable 'rowsPerInsert'

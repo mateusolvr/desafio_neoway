@@ -14,6 +14,13 @@ services:
       deploy:
         restart_policy:
           condition: on-failure
+        resources:
+          limits:
+            cpus: '0.30'
+            memory: 2048M
+          reservations:
+            cpus: '0.10'
+            memory: 1024M
           
     app:
         build: .
@@ -24,5 +31,5 @@ services:
         volumes:
             - .:/go/src/neoway
         working_dir: /go/src/neoway
-        command: ["./wait-for-it.sh", "db:5432", "--", "go", "run", "main.go", "base_teste.txt"]
+        command: ["./wait-for-it.sh", "db:5432", "--", "go", "run", "main.go"]
     
