@@ -11,7 +11,7 @@ Docker must be installed. It's possible to download it here: [link](https://www.
 #### Git
 Git also must be installed. It's possible to download it here: [link](https://git-scm.com/downloads).
 
-### Git Clonne
+### Git Clone
 
 Clone the application inside a folder:
 ```console
