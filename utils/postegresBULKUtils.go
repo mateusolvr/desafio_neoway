@@ -9,6 +9,8 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/Nhanderu/brdoc"
 )
 
 // ReplaceSQL : Replace the "?" with an increasing $n sequence
@@ -57,11 +59,15 @@ func SendDBBULK(reader *csv.Reader, db *sql.DB) {
 			columns := strings.Fields(line[0])
 
 			// Clean and validate the CPF
-			cleanCPF, flagCPF := CPFUtils(columns[0])
+			cleanCPF := CleanCPF(columns[0])
+			flagCPF := brdoc.IsCPF(cleanCPF)
 
 			// Clean and validate the CNPJ
-			cleanCNPJLojaMaisFreq, flagCNPJLojaMaisFreq := CNPJUtils(columns[6])
-			cleanCNPJLojaUltCompra, flagCNPJLojaUltCompra := CNPJUtils(columns[7])
+			cleanCNPJLojaMaisFreq := CleanCNPJ(columns[6])
+			flagCNPJLojaMaisFreq := brdoc.IsCNPJ(cleanCNPJLojaMaisFreq)
+
+			cleanCNPJLojaUltCompra := CleanCNPJ(columns[7])
+			flagCNPJLojaUltCompra := brdoc.IsCNPJ(cleanCNPJLojaUltCompra)
 
 			//Get current time to insert in the DB
 			currentTime := time.Now()
@@ -72,6 +78,12 @@ func SendDBBULK(reader *csv.Reader, db *sql.DB) {
 			if i == rowsPerInsert*n {
 				break
 			}
+
+			// if i == 9 {
+			// 	endOfData = true
+			// 	break
+			// }
+
 		}
 		fmt.Println("Number of inserted rows: ", i)
 		// Trim the last ,
