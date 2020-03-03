@@ -24,7 +24,7 @@ The files wished to be inserted into the database must be .txt or .csv and put i
 
 ### - Execution
 
-Use the file `config.json.example` to create a ``config.json` file with the parameters to connect to your database.
+Use the file `config.json.example` to create a `config.json` file with the parameters to connect to your database.
 
 Once inside the folder `neoway` execute the command:
 ```console
