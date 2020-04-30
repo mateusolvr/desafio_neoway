@@ -1,4 +1,4 @@
-# Neoway Challenge
+# Challenge: ETL (Golang, PostgreSQL and Docker-Compose)
 ## Data manipulation and persistence in an RDBMS
 
 This program was built with the purpose of extracting the data from .csv or .txt files using the Golang programming language and inserting them into a PostgreSQL database, ensuring data cleansing and also validation. It all is done using docker-compose.
@@ -15,7 +15,7 @@ Git also must be installed. It's possible to download it here: [link](https://gi
 
 Clone the application inside a folder:
 ```console
-git clone https://github.com/mateusolvr/neoway.git
+git clone https://github.com/mateusolvr/golang_etl.git
 ```
 
 ### - Files
